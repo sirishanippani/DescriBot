@@ -19,7 +19,10 @@ Live On: https://describot.onrender.com/
 5. Enter a product name and category, hit generate, and see the description appear!
 
 ## Screenshots
-Add screenshots of your pastel-themed UI here.
+
+How it looks?
+
+  ![Demo](DemoDescriBot.png)
 
 ## Tech Stack
 - Java 17
