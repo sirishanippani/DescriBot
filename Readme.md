@@ -2,6 +2,8 @@
 
 DescriBot is a Spring Boot + OpenAI powered prototype that generates catchy, human-like product descriptions from just a product name and category. It comes with a clean REST API and a cute pastel-themed single-page UI.
 
+Live On: https://describot.onrender.com/
+
 ## Features
 - Java Spring Boot CRUD backend
 - GPT-powered automatic product descriptions
