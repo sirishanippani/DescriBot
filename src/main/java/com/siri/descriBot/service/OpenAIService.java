@@ -20,7 +20,7 @@ public class OpenAIService {
     }
 
     public String generateDescription(String productName, String category) {
-        Map<String, Object> requestBody = getStringObjectMap(productName, category);
+        Map<String, Object> requestBody = getRequestBody(productName, category);
 
         try {
             Map response = webClient.post()
@@ -45,7 +45,7 @@ public class OpenAIService {
         }
     }
 
-    private static Map<String, Object> getStringObjectMap(String productName, String category) {
+    private static Map<String, Object> getRequestBody(String productName, String category) {
         String prompt = "Write a friendly, engaging product description for a product named "
                 + productName + " in the category " + category + "." + "Make sure it is trendy and attractive to all age groups.";
 
