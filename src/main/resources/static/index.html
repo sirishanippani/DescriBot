@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DescriBot</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div class="container">
+  <h2>DescriBot</h2>
+  <form id="productForm">
+    <label for="name">Product Name</label>
+    <input type="text" id="name" required placeholder="e.g. Cozy Handmade Mug" />
+
+    <label for="category">Category</label>
+    <input type="text" id="category" required placeholder="e.g. Kitchen Decor" />
+
+    <button type="submit"> Click to see magic happen 🪄 </button>
+  </form>
+  <div class="result" id="result"></div>
+  <div id="loading" style="display:none; text-align:center; margin-top:20px;">
+    <div class="spinner"></div>
+    <p>Thinking of the perfect words… ✨</p>
+  </div>
+</div>
+
+<script>
+  const form = document.getElementById('productForm');
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const name = document.getElementById('name').value;
+    const category = document.getElementById('category').value;
+
+    document.getElementById('loading').style.display = 'block';
+    document.getElementById('result').textContent = '';
+
+    fetch('/products', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name, category })
+    })
+    .then(response => response.json())
+    .then(data => {
+      document.getElementById('loading').style.display = 'none';
+      document.getElementById('result').textContent = data.description;
+    })
+    .catch(error => {
+      document.getElementById('loading').style.display = 'none';
+      document.getElementById('result').textContent = 'Error contacting DescriBot 😢';
+      console.error(error);
+    });
+  });
+</script>
+</body>
+</html>
